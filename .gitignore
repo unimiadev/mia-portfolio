@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.impeccable/
+/PRODUCT.md
+output/
+outputs/
+work/
+.env
+.env.*
+!.env.example

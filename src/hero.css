@@ -1,0 +1,37 @@
+.hero-cover { min-height: calc(100svh - var(--nav-height, 4.25rem)); display: grid; grid-template-rows: 1fr auto; align-items: center; padding-block: clamp(1rem,4vh,3rem); }
+.studio-layout { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1fr); align-items: center; gap: 2vw; }
+.greeting h1 { font-size: clamp(3.3rem,7.6vw,7.6rem); font-weight: 880; line-height: 1.02; letter-spacing: -.04em; text-wrap: balance; }
+.greeting h1 span { color: var(--red); }
+.greeting p { margin-top: clamp(1rem,2.2vw,2rem); max-width: 37ch; font-size: clamp(1.12rem,2vw,1.9rem); line-height: 1.35; }
+.studio { min-width: 0; position: relative; }
+.studio::before { content: ''; position: absolute; inset: 80% 24% 8%; background: radial-gradient(ellipse,#6655432e,transparent 70%); }
+.sculpture { position: relative; display: block; width: 100%; height: clamp(14rem,35vw,30rem); cursor: grab; touch-action: pan-y; }
+.sculpture:active { cursor: grabbing; }
+.sculpture canvas,.studio-poster { position: absolute; inset: 0; width: 100%; height: 100%; }
+.studio-poster { object-fit: contain; }
+.sculpture canvas { opacity: 0; }
+.sculpture:has(canvas[style*="opacity: 1"]) .studio-poster { visibility: hidden; }
+.sculpture[data-turned=true] .studio-poster { transform: perspective(700px) rotateY(15deg); }
+.studio-actions,.object-options,.hero-work { display:flex;align-items:center;flex-wrap:wrap; }
+.studio-actions { justify-content:space-between;gap:.75rem; }
+.hero-work { gap:.65rem;font-weight:680;min-height:44px; }
+.hero-work svg { color:var(--red); }
+.object-options { gap:.25rem .72rem; }
+.object-options button { font-size:.87rem; min-height:44px; color:var(--muted); border-bottom:2px solid transparent; }
+.object-options button[aria-pressed=true] { color:var(--red); border-color:currentColor; font-weight:670; }
+@media(max-width:700px){
+ .studio-layout { grid-template-columns:1fr; align-content:center;gap:0; }
+ .greeting h1 {font-size:clamp(3rem,11vw,5rem);}
+ .greeting p {max-width:30ch;margin-top:.75rem;}
+ .sculpture {height:clamp(7.5rem,28svh,16rem);}
+ .studio-actions {align-items:start;gap:.1rem;flex-direction:column;}
+ .object-options {gap:0 .75rem;}
+ .object-options button {font-size:.78rem; min-height:32px;}
+}
+@media(prefers-reduced-motion:no-preference){
+ html {scroll-behavior:smooth;}
+ .hero-work svg,.contact-button svg,.studio-poster {transition:transform .2s ease-out;}
+ .hero-work:is(:hover,:focus-visible) svg {transform:translateY(4px);}
+ .contact-button:is(:hover,:focus-visible) svg {transform:translateX(3px);}
+ .hero-work:active,.contact-button:active,.object-options button:active {transform:translateY(2px);}
+}
