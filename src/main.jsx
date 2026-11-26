@@ -45,6 +45,7 @@ const projects = [
 ]
 const copy = {
   en: {
+    title: "Mia's Portfolio — Creative Front-End for Web and Mobile",
     portfolio: 'Portfolio', work: 'Work', resume: 'Résumé', contact: 'Contact', skip: 'Skip to work',
     projectDetails: 'Project details', website: 'Visit website', webImage: 'Open web screenshot',
     phoneImage: 'Open mobile screenshot', webAlt: 'web interface', phoneAlt: 'mobile interface',
@@ -52,6 +53,7 @@ const copy = {
     about: 'About', experience: 'Experience', more: 'More projects',
   },
   pt: {
+    title: 'Portfólio da Mia — Front-end criativo para web e mobile',
     portfolio: 'Portfólio', work: 'Projetos', resume: 'Currículo', contact: 'Contato', skip: 'Ir para projetos',
     projectDetails: 'Detalhes do projeto', website: 'Visitar site', webImage: 'Abrir captura da versão web',
     phoneImage: 'Abrir captura da versão mobile', webAlt: 'interface web', phoneAlt: 'interface mobile',
@@ -224,7 +226,10 @@ function Header({ language, setLanguage, resume, t }) {
 
   return (
     <header ref={header} className="head flex flex-wrap items-center justify-between">
-      <a className="wordmark" href="#top" onClick={() => setOpen(false)}>Mia</a>
+      <a className="wordmark" href="#top" onClick={() => setOpen(false)} aria-label={pt ? 'Mia — início' : 'Mia — home'}>
+        <img src={assets + 'images/mia-mark.svg'} width="32" height="32" alt="" />
+        Mia
+      </a>
       <button type="button" className="menu-toggle" ref={toggle} aria-expanded={open}
         aria-controls="site-navigation" onClick={() => setOpen(!open)}>
         {open ? (pt ? 'Fechar' : 'Close') : 'Menu'}
@@ -259,13 +264,13 @@ function App() {
   const resume = assets + 'docs/curriculum%20-%20' + (language === 'pt' ? 'ptbr' : 'en') + '.pdf'
   useEffect(() => {
     document.documentElement.lang = language === 'pt' ? 'pt-BR' : 'en'
-    document.title = t.portfolio + ' — Front-end'
+    document.title = t.title
     try {
       localStorage.setItem('portfolio-language', language)
     } catch {
       // The language switcher still works when browser storage is disabled.
     }
-  }, [language, t.portfolio])
+  }, [language, t.title])
 
   return (
     <div className="site mx-auto">

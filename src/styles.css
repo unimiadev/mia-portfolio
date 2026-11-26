@@ -23,7 +23,7 @@ button, summary { cursor: pointer; }
 .skip { position: absolute; top: 0; left: 1rem; z-index: 5; padding: .65rem 1rem; background: var(--paper); transform: translateY(-140%); }
 .skip:focus { transform: translateY(0); }
 .head { min-height: 4.25rem; gap: .75rem; padding-block: .65rem; border-bottom: 1px solid var(--ink); }
-.wordmark { font-size: 1.5rem; font-weight: 850; letter-spacing: -.04em; }
+.wordmark { display: inline-flex; align-items: center; gap: .5rem; font-size: 1.5rem; font-weight: 850; letter-spacing: -.04em; }
 .menu-toggle { display: none; }
 .navigation { gap: clamp(.8rem, 2.4vw, 2.4rem); font-size: .98rem; font-weight: 690; }
 .navigation > a:hover, .footer a:hover, .project-links a:hover { text-decoration: underline; text-underline-offset: .22em; }
